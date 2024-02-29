@@ -1,0 +1,24 @@
+const express = require("express");
+const router=express.Router();
+const control=require("../controllers/index");
+const auth=require("../authentication/auth");
+const app=express();
+router.post("/adminLogin",control.admin.adminLogin);
+router.post("/approveRequest",control.admin.approveRequest);
+router.post("/approveShow",control.admin.approveShow);
+router.post("/adminRegister",control.admin.adminRegister);
+router.put("/adminUpdateById/:id",control.admin.updateAdminByIdInPut);
+router.patch("/adminupdateById/:id",control.admin.updateAdminByIdInPatch);
+router.patch("/resetPasswordAdmin/:id",control.admin.resetPasswordAdmin);
+router.get("/getAdminData",control.admin.getAdminData);
+router.get("/getAdminDataById/:id",control.admin.getAdminDataById);
+router.get("/getAdminDataByUsername/:username",control.admin.getAdminDataByUsername);
+router.get("/logutAdmin",auth.admin,control.admin.adminLogout);
+router.delete("/removeAdmin/:id/:username",control.admin.removeAdmin);
+router.get("/genderShow",control.admin.genderDistribution);
+router.get("/influencersActivity",control.admin.influencerActivity);
+router.get("/brandsActivity",control.admin.brandActivity);
+router.get("/hashTagShow",control.admin.hashtagShow);
+router.get("/verifySuperAdmin/:username",control.admin.verifyAdmin);
+
+module.exports=router;

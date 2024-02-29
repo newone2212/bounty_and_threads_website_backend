@@ -1,0 +1,12 @@
+const getAuthUrl = async (req, res, next) => {
+  try {
+    const scopes = "pages_show_list,pages_read_engagement,pages_manage_posts";
+    const redirectUri = "https://www.google.com/";
+    const authUrl = `https://www.facebook.com/v17.0/dialog/oauth?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${redirectUri}&scope=${scopes}`;
+
+    res.send({ authUrl });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
